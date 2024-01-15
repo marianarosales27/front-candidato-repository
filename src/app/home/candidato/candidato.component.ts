@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { CandidatoService } from '../candidato.service';
 import { Candidato } from './candidato';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-candidato',
   templateUrl: './candidato.component.html',
@@ -10,12 +10,12 @@ import { HttpClient } from '@angular/common/http';
 export class CandidatoComponent {
 
   constructor(
-    private service: CandidatoService,
-    private http: HttpClient
+    private http: HttpClient,
+    private route: Router
     ) { }
 
-    title = 'http-get';
-    candidatos: any; // <---
+
+    candidatos: any;
 
     private url = 'http://localhost:8080/ip/';
 
@@ -25,6 +25,12 @@ export class CandidatoComponent {
         console.log(data);
         this.candidatos = data;
     });
+  }
+
+  ver(id: number) {
+    console.log("Entre a función ver");
+    console.log(id);
+    this.route.navigate(['candidato-detalle', id]);
   }
 
 

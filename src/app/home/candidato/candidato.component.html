@@ -1,4 +1,22 @@
-<p *ngFor="let item of candidatos">{{item.nombre}}</p>
-<p *ngFor="let item of candidatos">{{item.entrevista}}</p>
-<p *ngFor="let item of candidatos">{{item.tecnologiaJava}}</p>
-<p *ngFor="let item of candidatos">{{item.tecnologiaMicroservicios}}</p>
+<section>
+  <mat-card  *ngFor="let item of candidatos" class="tarjeta">
+    <mat-card-header>
+      <mat-card-title class="titulo">
+        <mat-icon fontIcon="assignment_ind"  class="icon-display"></mat-icon>
+          &nbsp;&nbsp;
+          {{item.nombre}}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-footer>
+      <button mat-fab color="primary" [routerLink]="['/candidato-detalle', item.id]" (click)="ver(item.id)">
+            <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-footer>
+    <br>
+  </mat-card>
+</section>
+
+
+
+

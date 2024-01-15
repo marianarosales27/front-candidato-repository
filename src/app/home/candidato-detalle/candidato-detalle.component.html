@@ -1,0 +1,43 @@
+<section>
+  <mat-card class="tarjeta" *ngIf="candidato !== undefined && candidato !== null">
+    <mat-card-header>
+      <mat-card-title class="titulo">
+        <mat-icon fontIcon="assignment_ind"  class="icon-display"></mat-icon>
+          &nbsp;&nbsp;
+          {{candidato.nombre}}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content >
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <div class="color1"><p>F. Entevista: &nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+          <br>
+          <div class="color2"><p>{{candidato.entrevista | date}}</p></div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="color1"><p>Java &nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+          <mat-checkbox (ngModel)="java" (change)="cambioJava($event.checked)" [checked]="candidato.tecnologiaJava" ></mat-checkbox>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="color1"><p>Microservicios &nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+          <mat-checkbox (ngModel)="micro" (change)="cambioMicro($event.checked)"  [checked]="candidato.tecnologiaMicroservicios"></mat-checkbox>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="color1"><p>Elastic &nbsp;&nbsp;&nbsp;&nbsp;</p></div>
+          <mat-checkbox (ngModel)="elastic" (change)="cambioElastic($event.checked)"  [checked]="candidato.tecnologiaElastic" ></mat-checkbox>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+    </mat-card-content>
+
+    <mat-card-footer>
+      <button mat-fab color="primary" (click)="regresar(candidato.id)">
+        <mat-icon>assignment_return</mat-icon>
+      </button>
+      <button mat-fab color="primary" (click)="guardar(candidato.id)">
+        <mat-icon>save</mat-icon>
+      </button>
+    </mat-card-footer>
+    <br>
+  </mat-card>
+</section>
